@@ -5,7 +5,7 @@ const jwtGenerator = require("../utility/jwtGenerator")
 const validInfo = require("../middleware/validinfo")
 const authorization = require("../middleware/authorization")
 
-router.post("/register", validInfo, async (req, res) =>{
+router.post("/register", async (req, res) =>{
     try {
         const {user_name, user_email, user_password, account_balance} = req.body
         const user = await data.query("SELECT * FROM users WHERE user_email = $1", [
