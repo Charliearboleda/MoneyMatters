@@ -11,9 +11,9 @@ router.post("/register", async (req, res) =>{
         const user = await data.query("SELECT * FROM users WHERE user_email = $1", [
             email
         ])
-        if(user.rows.length !== 0){
-            return res.status(401).send("User Already Exist")
-        }
+        // if(user.rows.length !== 0){
+        //     return res.status(401).send("User Already Exist")
+        // }
 
     const saltRound = 10
     const salt = await bcrypt.genSalt(saltRound)
