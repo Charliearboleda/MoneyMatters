@@ -19,7 +19,7 @@ router.post("/register", validInfo, async (req, res) =>{
     const salt = await bcrypt.genSalt(saltRound)
     const bcryptPassword = await bcrypt.hash(password, salt)
 
-    const newUser = await data.query("INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *",[name, email, bcryptPassword])
+    const newUser = await data.query("INSERT INTO users (user_name, user_email, user_password, account_balance) VALUES ($1, $2, $3, $4) RETURNING *",[name, email, bcryptPassword, account_balance])
 
 
     const token = jwtGenerator(newUser.rows[0].user_id)
