@@ -6,7 +6,10 @@ const data = new Data({
     // host:"localhost",
     // port:5432,
     // database:"moneymatters"
-    connectionString: process.env.DATABASE_URL || "postgresql://localhost:5432/moneymatters"
+    connectionString: process.env.DATABASE_URL || "postgresql://localhost:5432/moneymatters",
+    ssl:{
+        rejectUnauthorized: false
+    }
 })
 
 module.exports = data
