@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const data = require("../db")
 const authorization = require("../middleware/authorization")
-
+require('dotenv').config()
 
 router.get("/", authorization, async(req,res) => {
     try {
