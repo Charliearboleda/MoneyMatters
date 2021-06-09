@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import React,{ Fragment, useState } from "react"
+import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom"
+import Dashboard from "./components/dashboard"
+import Login from "./components/login"
+import Register from "./components/register"
 function App() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Fragment>
+    <Router>
+    <div className="container">
+    <Switch>
+    <Route exact path="/login" render={props => !isAuthenticated ? <Login {...props} /> : <Redirect to="/dashboard" />}/>
+    <Route exact path="/register" render={props => !isAuthenticated? <Register {...props} /> : <Redirect to="/login" />}/>
+    <Route exact path="/dashboard" render={props => isAuthenticated ? <Dashboard {...props} /> : <Redirect to="/login" />}/>
+    </Switch>
     </div>
+    </Router>
+    </Fragment>
   );
 }
 

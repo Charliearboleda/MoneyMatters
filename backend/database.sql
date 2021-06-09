@@ -8,4 +8,4 @@ CREATE TABLE users (
     account_balance INTEGER
 );
 
-INSERT INTO users (user_name, user_email, user_password) VALUES('charlie', 'charlieiarboleda@gmail.com', 'test123456');
+INSERT INTO users (user_name, user_email, user_password, account_balance) VALUES('charlie', 'charlieiarboleda@gmail.com', 'test123456');

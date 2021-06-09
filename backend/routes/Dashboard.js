@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const data = require("../db")
 const authorization = require("../middleware/authorization")
-
+require('dotenv').config()
 
 router.get("/", authorization, async(req,res) => {
     try {
@@ -16,4 +16,6 @@ router.get("/", authorization, async(req,res) => {
     res.status(500).json("Server Error")
     }
 })
+
+
 module.exports = router
