@@ -17,7 +17,7 @@ router.post("/register", async (req, res) =>{
 
     const saltRound = 10
     const salt = await bcrypt.genSalt(saltRound)
-    const bcryptPassword = await bcrypt.hash(password, salt)
+    const bcryptPassword = await bcrypt.hash(user_password, salt)
 
     const newUser = await data.query("INSERT INTO users (user_name, user_email, user_password, account_balance) VALUES ($1, $2, $3, $4) RETURNING *",[user_name, user_email, bcryptPassword, account_balance])
 
