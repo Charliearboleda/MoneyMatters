@@ -60,8 +60,9 @@ router.get("/is-verify", authorization, async(req, res)=> {
     }
 })
 
-router.put("/:id", authorization, async(req, res) => {
+router.put("/:id", async(req, res) => {
     try {
+        console.log(req.body)
         const { account_balance, user_name } = req.body
         const newBalance = await data.query("UPDATE users SET account_balance = $1, user_name = $2 WHERE user_id = $3 RETURNING *", [account_balance, user_name, req.params.id])
 
