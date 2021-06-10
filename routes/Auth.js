@@ -31,7 +31,7 @@ router.post("/register", async (req, res) =>{
     }
 })
 
-router.post("/login",validInfo, async(req, res)=> {
+router.post("/login", async(req, res)=> {
     try {
         const {user_email, user_password} = req.body
         const user = await data.query("SELECT * FROM users WHERE user_email = $1", [
