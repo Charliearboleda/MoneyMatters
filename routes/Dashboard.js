@@ -6,7 +6,7 @@ require('dotenv').config()
 router.get("/", authorization, async(req,res) => {
     try {
 
-        const user = await data.query("SELECT user_name FROM users WHERE user_id = $1", [req.user])
+        const user = await data.query("SELECT * FROM users WHERE user_id = $1", [req.user])
 
         res.json(user.rows[0])
 
