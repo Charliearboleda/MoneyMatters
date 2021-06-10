@@ -8,7 +8,7 @@ router.get("/", authorization, async(req,res) => {
 
         const user = await data.query("SELECT user_name FROM users WHERE user_id = $1", [req.user])
 
-        res.json(user.rows)
+        res.json(user.rows[0])
 
 
 
