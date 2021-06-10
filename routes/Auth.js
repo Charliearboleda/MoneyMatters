@@ -11,7 +11,7 @@ router.post("/register", async (req, res) =>{
         const user = await data.query("SELECT * FROM users WHERE user_email = $1", [
             user_email
         ])
-        
+
 
     const saltRound = 10
     const salt = await bcrypt.genSalt(saltRound)
@@ -57,6 +57,16 @@ router.get("/is-verify", authorization, async(req, res)=> {
     } catch (err) {
         console.error(err.message)
         res.status(500).send("server error")
+    }
+})
+
+router.put("/:id", authorization, async(req, res) => {
+    try {
+        const { account_balance, user_id } = req.body
+        const newBalance = await data.query("UPDATE users SET account_balance = $1 WHERE user_id = $2 RETURN *", [account_balance, user_id])
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("something wrong with balance update ")
     }
 })
 
