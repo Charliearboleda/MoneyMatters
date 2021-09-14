@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const PORT = process.env.PORT
 const corsOptions = {
-  origin: "https://money-managment-nyc.herokuapp.com/",
+  origin: "https://sharp-torvalds-d6526b.netlify.app/",
   optionsSuccessStatus:200
 }
 app.use(cors(corsOptions))
