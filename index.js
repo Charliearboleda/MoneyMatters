@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const PORT = process.env.PORT
 const corsOptions = {
-  origin: "https://moneymatters1.herokuapp.com",
+  origin: "https://money-managment-nyc.herokuapp.com/",
   optionsSuccessStatus:200
 }
 app.use(cors(corsOptions))
